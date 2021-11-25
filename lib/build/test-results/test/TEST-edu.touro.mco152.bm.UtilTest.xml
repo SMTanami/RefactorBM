@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="edu.touro.mco152.bm.UtilTest" tests="5" skipped="0" failures="0" errors="0" timestamp="2021-11-25T04:04:57" hostname="DESKTOP-FA9FUNO" time="0.044">
+  <properties/>
+  <testcase name="testDeleteDirectoryNull()" classname="edu.touro.mco152.bm.UtilTest" time="0.003"/>
+  <testcase name="[1] 12.34, 12.34" classname="edu.touro.mco152.bm.UtilTest" time="0.01"/>
+  <testcase name="[2] 42.5, 42.5" classname="edu.touro.mco152.bm.UtilTest" time="0.001"/>
+  <testcase name="testRandInt()" classname="edu.touro.mco152.bm.UtilTest" time="0.001"/>
+  <testcase name="testRandInt2()" classname="edu.touro.mco152.bm.UtilTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
