@@ -50,7 +50,7 @@ public class Util {
      * @param min Minimum value
      * @param max Maximum value.  Must be greater than min.
      * @return Integer between min and max, inclusive.
-     * @see java.util.Random#nextInt(int)
+     * @see Random#nextInt(int)
      */
     public static int randInt(int min, int max) {
 

@@ -51,7 +51,7 @@ public class RunPanel extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         runTable = new javax.swing.JTable();
 
-        runTable.setModel(new javax.swing.table.DefaultTableModel(
+        runTable.setModel(new DefaultTableModel(
                 new Object[][]{
 
                 },

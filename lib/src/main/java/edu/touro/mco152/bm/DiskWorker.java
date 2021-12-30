@@ -297,7 +297,7 @@ public class DiskWorker extends SwingWorker<Boolean, DiskMark> {
         if (App.autoRemoveData) {
             Util.deleteDirectory(dataDir);
         }
-        App.state = App.State.IDLE_STATE;
+        App.state = State.IDLE_STATE;
         Gui.mainFrame.adjustSensitivity();
     }
 }
