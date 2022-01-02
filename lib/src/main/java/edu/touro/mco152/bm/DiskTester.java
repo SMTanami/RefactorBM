@@ -19,16 +19,10 @@ import static edu.touro.mco152.bm.App.*;
 import static edu.touro.mco152.bm.DiskMark.MarkType.READ;
 import static edu.touro.mco152.bm.DiskMark.MarkType.WRITE;
 
-public class DiskWorker{
+public class DiskTester extends HardwareTester{
 
-    private BenchmarkUI bUI;
-
-    public DiskWorker(BenchmarkUI bUI)
-    {
-        this.bUI = bUI;
-    }
-
-    protected Boolean doInBackground() throws Exception {
+    @Override
+    public Boolean initiateTest(BenchmarkUI bUI){
 
         /*
           We 'got here' because: a) End-user clicked 'Start' on the benchmark UI,
