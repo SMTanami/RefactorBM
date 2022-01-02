@@ -35,10 +35,9 @@ public class GUIBenchmarkUI extends SwingWorker<Boolean, DiskMark> implements Be
 
     /**
      * This method schedules this GUIBenchmarkUI for execution on a separate thread managed completely by Swing (IoC).
-     * @throws Exception if the method call fails
      */
     @Override
-    public void beginWork() throws Exception
+    public void beginWork()
     {
         execute();
     }

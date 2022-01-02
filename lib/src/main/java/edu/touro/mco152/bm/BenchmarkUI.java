@@ -11,7 +11,7 @@ public interface BenchmarkUI
      * Starts executing core work of program
      * @throws Exception if method call fails
      */
-    void beginWork() throws Exception;
+    void beginWork();
 
     /**
      * Renders DiskMarks and posts their process on the UI
