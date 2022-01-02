@@ -4,6 +4,8 @@ import edu.touro.mco152.bm.App;
 import edu.touro.mco152.bm.BenchmarkUI;
 import edu.touro.mco152.bm.DiskMark;
 import edu.touro.mco152.bm.Util;
+import edu.touro.mco152.bm.observe.Observable;
+import edu.touro.mco152.bm.observe.Observer;
 import edu.touro.mco152.bm.persist.DiskRun;
 import edu.touro.mco152.bm.ui.Gui;
 
@@ -11,6 +13,8 @@ import java.io.File;
 import java.io.IOException;
 import java.io.RandomAccessFile;
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -23,8 +27,10 @@ import static edu.touro.mco152.bm.DiskMark.MarkType.READ;
  * <p>
  * This is a concrete DiskTest class. It's job is to perform Read Tests for Disks
  */
-public class DiskReadTest extends DiskTest
+public class DiskReadTest extends DiskTest implements Observable
 {
+    private final Set<Observer> observers = new HashSet<>();
+
     private int rUnitsComplete;
     private int rUnitsTotal;
     private int startFileNum;
@@ -111,6 +117,7 @@ public class DiskReadTest extends DiskTest
             bUI.stageData(rMark);
             trackRunStats(run);
         }
+        notifyObservers();
     }
 
     /**
@@ -175,6 +182,36 @@ public class DiskReadTest extends DiskTest
     public DiskRun getRun()
     {
         return run;
+    }
+
+    /**
+     * @param observer observer to register to the observable
+     */
+    @Override
+    public void registerObserver(Observer observer)
+    {
+        observers.add(observer);
+    }
+
+    /**
+     * @param observer observer to unregister from the observable
+     */
+    @Override
+    public void unregisterObserver(Observer observer)
+    {
+        observers.remove(observer);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public void notifyObservers()
+    {
+        for (Observer observer : observers)
+        {
+            observer.update(run);
+        }
     }
 }
 

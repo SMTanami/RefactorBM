@@ -2,6 +2,8 @@ package edu.touro.mco152.bm.ui;
 
 import edu.touro.mco152.bm.App;
 import edu.touro.mco152.bm.DiskMark;
+import edu.touro.mco152.bm.observe.Observer;
+import edu.touro.mco152.bm.persist.DiskRun;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
@@ -17,10 +19,11 @@ import java.io.Serial;
 import java.text.NumberFormat;
 
 /**
- * Store gui references for easy access
+ * Store gui references for easy access. It now implements the Observer interface. As such, when notified, it will
+ *  * add a DiskRun to the GUI's runPanel.
  */
-public final class Gui {
-
+public final class Gui implements Observer
+{
     public static ChartPanel chartPanel = null;
     public static MainFrame mainFrame = null;
     public static SelectFrame selFrame = null;
@@ -138,5 +141,30 @@ public final class Gui {
         chart.getXYPlot().getRenderer().setSeriesVisibleInLegend(5, App.readTest);
         chart.getXYPlot().getRenderer().setSeriesVisibleInLegend(6, App.readTest && App.showMaxMin);
         chart.getXYPlot().getRenderer().setSeriesVisibleInLegend(7, App.readTest && App.showMaxMin);
+    }
+
+    /**
+     * {@inheritDoc}
+     * <p>
+     *This method is not used in this implementation
+     */
+    @Override
+    public void update()
+    {
+
+    }
+
+    /**
+     * Lets this object know that its observable has completed it's task and executes subsequent logic.
+     * @param o The object necessary for the implementing class to execute properly. In this case, a DiskRun Object
+     *          reflecting a DiskReadTest's or DiskWriteTest's performance.
+     */
+    @Override
+    public void update(Object o)
+    {
+        if (o instanceof DiskRun)
+        {
+            Gui.runPanel.addRun((DiskRun) o);
+        }
     }
 }
