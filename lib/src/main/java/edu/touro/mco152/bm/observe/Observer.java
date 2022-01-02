@@ -13,6 +13,7 @@ public interface Observer
 
     /**
      * Lets this object know that its observable has completed it's task and executes subsequent logic.
+     * @param o The object necessary for the implementing class to execute properly.
      */
     void update(Object o);
 }

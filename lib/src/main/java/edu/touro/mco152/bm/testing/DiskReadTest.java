@@ -117,6 +117,7 @@ public class DiskReadTest extends DiskTest implements Observable
             bUI.stageData(rMark);
             trackRunStats(run);
         }
+        notifyObservers();
     }
 
     /**

@@ -125,6 +125,7 @@ public class DiskWriteTest extends DiskTest implements Observable
             bUI.stageData(wMark);
             trackRunStats(run);
         }
+        notifyObservers();
     }
 
     /**
@@ -190,7 +191,7 @@ public class DiskWriteTest extends DiskTest implements Observable
     {
         return run;
     }
-    
+
     /**
      * @param observer observer to register to the observable
      */

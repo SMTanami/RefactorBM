@@ -19,7 +19,8 @@ import java.io.Serial;
 import java.text.NumberFormat;
 
 /**
- * Store gui references for easy access
+ * Store gui references for easy access. It now implements the Observer interface. As such, when notified, it will
+ *  * add a DiskRun to the GUI's runPanel.
  */
 public final class Gui implements Observer
 {
