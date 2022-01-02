@@ -2,6 +2,8 @@ package edu.touro.mco152.bm;
 
 import edu.touro.mco152.bm.command.DiskReadCommand;
 import edu.touro.mco152.bm.command.DiskWriteCommand;
+import edu.touro.mco152.bm.persist.TestSaver;
+import edu.touro.mco152.bm.testing.reporting.ReadTestReporter;
 import edu.touro.mco152.bm.ui.Gui;
 
 import javax.swing.*;
@@ -62,14 +64,39 @@ public class DiskTester extends HardwareTester
     {
         if (App.readTest)
         {
-            DiskReadCommand readCommand = new DiskReadCommand(bUI, App.numOfMarks, App.numOfBlocks, App.blockSizeKb, App.blockSequence);
-            invoker.enqueueCommand(readCommand);
+            DiskReadCommand command = new DiskReadCommand(bUI, App.numOfMarks, App.numOfBlocks, App.blockSizeKb, App.blockSequence);
+            registerObservers(command);
+
+            invoker.enqueueCommand(command);
         }
 
         if (App.writeTest)
         {
-            DiskWriteCommand writeCommand = new DiskWriteCommand(bUI, App.numOfMarks, App.numOfBlocks, App.blockSizeKb, App.blockSequence);
-            invoker.enqueueCommand(writeCommand);
+            DiskWriteCommand command = new DiskWriteCommand(bUI, App.numOfMarks, App.numOfBlocks, App.blockSizeKb, App.blockSequence);
+            registerObservers(command);
+
+            invoker.enqueueCommand(command);
         }
+    }
+
+    /**
+     * Registers relevant observers to the nested DiskReadTest within given command
+     * @param command ReadTestCommand that contains the DiskReadTest that observers are being registered to
+     */
+    private void registerObservers(DiskReadCommand command)
+    {
+        command.getReadTest().registerObserver(new TestSaver());
+        command.getReadTest().registerObserver(new ReadTestReporter());
+        command.getReadTest().registerObserver(new Gui());
+    }
+
+    /**
+     * Registers relevant observers to the nested DiskWriteTest within given command
+     * @param command WriteTestCommand that contains the DiskWriteTest that observers are being registered to
+     */
+    private void registerObservers(DiskWriteCommand command)
+    {
+        command.getWriteTest().registerObserver(new TestSaver());
+        command.getWriteTest().registerObserver(new Gui());
     }
 }
