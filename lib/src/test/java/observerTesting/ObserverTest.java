@@ -16,6 +16,10 @@ import java.beans.PropertyChangeListener;
 import java.io.File;
 import java.util.*;
 
+/**
+ * This test class test for the systems successful implementation of the Observer Pattern. It does so by registering
+ * a {@link TestObserver} to a read test, which of course is an observable object.
+ */
 public class ObserverTest implements BenchmarkUI
 {
     private final int numOfMarks = 25;

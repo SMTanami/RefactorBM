@@ -10,18 +10,27 @@ public class TestObserver implements Observer
 {
     private boolean observed = false;
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public void update()
     {
         observed = true;
     }
 
+    /**
+     * @param o The object necessary for the implementing class to execute properly.
+     */
     @Override
     public void update(Object o)
     {
         observed = true;
     }
 
+    /**
+     * @return true if this observer was successfully registered unto and notified by an observable object
+     */
     public boolean isObserved()
     {
         return observed;
