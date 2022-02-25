@@ -1,7 +1,7 @@
 ﻿**jDiskMark** is a disk io benchmarking utility written in java, kindly made public by jamesmarkchan in https://sourceforge.net/projects/jdiskmark/  and protected under BSD License and Apache License V2.0.  See that repository for more detailed readme about functionality
 
 **Repository Purpuse**
-The goal of this repository is to reflect my software architecture and design knwoledge. This code was initially poorly written and was not particularly object oriented, nor was it particularly extensible. However, with my implementation of SOLID principles and several design patterns, the code has been successfully refactored into a well designed system that is easily extensible and complies with core programming prciniples. 
+The goal of this repository is to reflect my software architecture and design knowledge. This code was initially poorly written and was not particularly object oriented or extensible. However, with my implementation of SOLID principles and several design patterns, the code has been successfully refactored into a well designed system that is easily extensible, readable, robust, and complies with core programming prciniples. 
 
 To see each change made to the repository, please reference the nine closed pull requests.
  
